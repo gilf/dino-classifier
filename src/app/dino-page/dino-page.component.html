@@ -1,0 +1,17 @@
+<div>
+  <nav>
+    <a routerLink="/dinos"><dino-button text="Back"></dino-button></a>
+  </nav>
+  <dino-button text="Edit dinosaur" [btnClicked]="openEditDrawer" class="edit-button"></dino-button>
+  <dino-details [dinosaur]="dino"></dino-details>
+  <side-drawer *ngIf="dinoForEdit" anchorDirection="left" [openDrawer]="openForEdit" (onOverlayClick)="closeEditDrawer()">
+    <h1>Edit {{dinoForEdit.name}}</h1>
+    <form #dinoForm="ngForm" class="dino-form">
+      <div>
+        <label><h3>Description:</h3></label>
+        <textarea rows="12" [(ngModel)]="dinoForEdit.description" name="description"></textarea>
+      </div>
+      <dino-button text="Save" [btnClicked]="saveDino"></dino-button>
+    </form>
+  </side-drawer>
+</div>
