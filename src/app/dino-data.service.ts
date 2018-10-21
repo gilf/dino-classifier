@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dino } from 'dino-components/dist/types/classes/Dino';
 import {HttpClient} from '@angular/common/http';
-import { of } from 'rxjs';
 
 const dinoDataUrl = '/assets/data/data.json';
 
