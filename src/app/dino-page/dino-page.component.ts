@@ -23,7 +23,7 @@ export class DinoPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       const index = +params['index'];
-      this.dinoService.getDinosaurs().subscribe((dinos) => {
+      this.dinoService.getDinosaurs().then((dinos) => {
         this.dino = dinos[index];
       });
     });

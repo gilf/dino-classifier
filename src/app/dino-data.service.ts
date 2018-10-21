@@ -12,15 +12,17 @@ export class DinoDataService {
   private dinosaurs: Array<Dino>;
   constructor(private http: HttpClient) { }
 
-  getDinosaurs() {
+  getDinosaurs(): Promise<Array<Dino>> {
     if (!this.dinosaurs) {
-      const subscription = this.http.get<Array<Dino>>(dinoDataUrl);
-      subscription.subscribe((data) => {
+      const promise = this.http.get<Array<Dino>>(dinoDataUrl)
+        .pipe().toPromise();
+      promise.then((data) => {
         this.dinosaurs = data;
+        return data;
       });
-      return subscription;
+      return promise;
     } else {
-      return of(this.dinosaurs);
+      return new Promise((resolve) => resolve(this.dinosaurs));
     }
   }
 

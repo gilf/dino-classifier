@@ -13,7 +13,7 @@ export class DinosPageComponent implements OnInit {
   constructor(private router: Router, private dinoService: DinoDataService) { }
 
   ngOnInit() {
-    this.dinoService.getDinosaurs().subscribe((dinos) => {
+    this.dinoService.getDinosaurs().then((dinos) => {
       this.dinosaurs = dinos;
     });
   }
